@@ -60,6 +60,9 @@ Esto iniciará los siguientes servicios:
 - AKHQ (Kafka UI): http://localhost:8080 (Interfaz de administración de Kafka)
 - API Docs: http://localhost:8085 (Documentación de la API)
 
+Para visualizar la cache de Redis recomiendo tener [RedisInsight](https://redis.io/insight/)
+Para visualizar la base de datos MongoDB recomiendo tener [MongoDB Compass](https://www.mongodb.com/try/download/compass)
+
 Para verificar el estado de los servicios:
 
 ```bash
