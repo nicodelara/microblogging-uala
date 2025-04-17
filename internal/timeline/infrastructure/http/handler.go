@@ -7,8 +7,8 @@ import (
 	"errors"
 
 	"github.com/gin-gonic/gin"
-	"github.com/nicodelara/uala-challenge/internal/timeline/application"
-	"github.com/nicodelara/uala-challenge/internal/timeline/domain/ports"
+	"github.com/nicodelara/microblogging-uala/internal/timeline/application"
+	"github.com/nicodelara/microblogging-uala/internal/timeline/domain/ports"
 )
 
 type TimelineHandler struct {

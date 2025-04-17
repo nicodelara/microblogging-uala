@@ -27,8 +27,8 @@ Este proyecto es una implementación simplificada de una plataforma de microblog
 ### 1. Clonar el Repositorio
 
 ```bash
-git clone https://github.com/nicodelara/uala-challenge.git
-cd uala-challenge
+git clone https://github.com/nicodelara/microblogging-uala.git
+cd microblogging-uala
 ```
 
 ### 2. Instalar Dependencias

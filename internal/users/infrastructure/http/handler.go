@@ -6,8 +6,8 @@ import (
 	"errors"
 
 	"github.com/gin-gonic/gin"
-	"github.com/nicodelara/uala-challenge/internal/users/application"
-	"github.com/nicodelara/uala-challenge/internal/users/domain/ports"
+	"github.com/nicodelara/microblogging-uala/internal/users/application"
+	"github.com/nicodelara/microblogging-uala/internal/users/domain/ports"
 )
 
 type userHandler struct {

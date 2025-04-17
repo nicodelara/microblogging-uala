@@ -9,7 +9,7 @@ info:
 servers:
   - url: http://localhost:8080
     description: Servidor de desarrollo local
-  - url: https://api.uala-challenge.com
+  - url: https://api.microblogging-uala.com
     description: Servidor de producción
 paths:
   /tweets:
@@ -35,7 +35,7 @@ paths:
                 - username
                 - content
       responses:
-        '201':
+        "201":
           description: Tweet creado exitosamente
           content:
             application/json:
@@ -55,7 +55,7 @@ paths:
                     type: string
                     format: date-time
                     description: Fecha y hora de creación
-        '400':
+        "400":
           description: Error en la validación
           content:
             application/json:
@@ -65,7 +65,7 @@ paths:
                   error:
                     type: string
                     description: Mensaje de error
-        '404':
+        "404":
           description: Usuario no encontrado
           content:
             application/json:
@@ -75,7 +75,7 @@ paths:
                   error:
                     type: string
                     description: Mensaje de error
-        '500':
+        "500":
           description: Error interno del servidor
           content:
             application/json:
@@ -108,7 +108,7 @@ paths:
                 - username
                 - email
       responses:
-        '201':
+        "201":
           description: Usuario creado exitosamente
           content:
             application/json:
@@ -121,7 +121,7 @@ paths:
                   email:
                     type: string
                     description: Correo electrónico del usuario
-        '400':
+        "400":
           description: Error en la validación
           content:
             application/json:
@@ -131,7 +131,7 @@ paths:
                   error:
                     type: string
                     description: Mensaje de error
-        '409':
+        "409":
           description: Conflicto - Usuario o email ya existe
           content:
             application/json:
@@ -141,7 +141,7 @@ paths:
                   error:
                     type: string
                     description: Mensaje de error (username already exists o email already exists)
-        '500':
+        "500":
           description: Error interno del servidor
           content:
             application/json:
@@ -176,7 +176,7 @@ paths:
               required:
                 - followUsername
       responses:
-        '201':
+        "201":
           description: Usuario seguido exitosamente
           content:
             application/json:
@@ -192,7 +192,7 @@ paths:
                   following:
                     type: string
                     description: Nombre de usuario seguido
-        '400':
+        "400":
           description: Error en la validación
           content:
             application/json:
@@ -202,7 +202,7 @@ paths:
                   error:
                     type: string
                     description: Mensaje de error
-        '404':
+        "404":
           description: Usuario no encontrado
           content:
             application/json:
@@ -212,7 +212,7 @@ paths:
                   error:
                     type: string
                     description: Mensaje de error (el usuario que quiere seguir no existe o el usuario a seguir no existe)
-        '409':
+        "409":
           description: Conflicto - Ya está siguiendo a este usuario
           content:
             application/json:
@@ -222,7 +222,7 @@ paths:
                   error:
                     type: string
                     description: Mensaje de error (ya estás siguiendo a este usuario)
-        '500':
+        "500":
           description: Error interno del servidor
           content:
             application/json:
@@ -258,7 +258,7 @@ paths:
             type: integer
             default: 10
       responses:
-        '200':
+        "200":
           description: Timeline del usuario
           content:
             application/json:
@@ -286,7 +286,7 @@ paths:
                           type: string
                           format: date-time
                           description: Fecha y hora de creación
-        '404':
+        "404":
           description: Usuario no encontrado
           content:
             application/json:
@@ -296,7 +296,7 @@ paths:
                   error:
                     type: string
                     description: Mensaje de error
-        '500':
+        "500":
           description: Error interno del servidor
           content:
             application/json:

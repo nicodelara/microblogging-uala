@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/nicodelara/uala-challenge/internal/users/domain"
+	"github.com/nicodelara/microblogging-uala/internal/users/domain"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"

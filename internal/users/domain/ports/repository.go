@@ -3,7 +3,7 @@ package ports
 import (
 	"context"
 
-	"github.com/nicodelara/uala-challenge/internal/users/domain"
+	"github.com/nicodelara/microblogging-uala/internal/users/domain"
 )
 
 // UserRepository define las operaciones que un repositorio de usuarios debe implementar

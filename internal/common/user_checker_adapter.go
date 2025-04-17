@@ -5,8 +5,8 @@ import (
 	"errors"
 	"time"
 
-	"github.com/nicodelara/uala-challenge/internal/users/domain"
-	userPorts "github.com/nicodelara/uala-challenge/internal/users/domain/ports"
+	"github.com/nicodelara/microblogging-uala/internal/users/domain"
+	userPorts "github.com/nicodelara/microblogging-uala/internal/users/domain/ports"
 )
 
 // User representa un usuario en el sistema

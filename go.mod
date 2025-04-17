@@ -1,4 +1,4 @@
-module github.com/nicodelara/uala-challenge
+module github.com/nicodelara/microblogging-uala
 
 go 1.22
 

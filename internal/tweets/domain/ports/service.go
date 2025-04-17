@@ -3,7 +3,7 @@ package ports
 import (
 	"context"
 
-	"github.com/nicodelara/uala-challenge/internal/tweets/domain"
+	"github.com/nicodelara/microblogging-uala/internal/tweets/domain"
 )
 
 // TweetService define la interfaz para el servicio de tweets

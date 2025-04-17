@@ -3,8 +3,8 @@ package mongo
 import (
 	"context"
 
-	"github.com/nicodelara/uala-challenge/internal/tweets/domain"
-	"github.com/nicodelara/uala-challenge/internal/tweets/domain/ports"
+	"github.com/nicodelara/microblogging-uala/internal/tweets/domain"
+	"github.com/nicodelara/microblogging-uala/internal/tweets/domain/ports"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 )

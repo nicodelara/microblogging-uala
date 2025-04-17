@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	timelinedomain "github.com/nicodelara/uala-challenge/internal/timeline/domain"
-	usersdomain "github.com/nicodelara/uala-challenge/internal/users/domain"
+	timelinedomain "github.com/nicodelara/microblogging-uala/internal/timeline/domain"
+	usersdomain "github.com/nicodelara/microblogging-uala/internal/users/domain"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )

@@ -3,7 +3,7 @@ package ports
 import (
 	"context"
 
-	"github.com/nicodelara/uala-challenge/internal/timeline/domain"
+	"github.com/nicodelara/microblogging-uala/internal/timeline/domain"
 )
 
 // TimelineService define la interfaz para el servicio de timeline

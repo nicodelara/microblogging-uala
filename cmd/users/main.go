@@ -10,11 +10,11 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/nicodelara/uala-challenge/internal/users/application"
-	userhttp "github.com/nicodelara/uala-challenge/internal/users/infrastructure/http"
-	usermongo "github.com/nicodelara/uala-challenge/internal/users/infrastructure/mongo"
-	"github.com/nicodelara/uala-challenge/pkg/config"
-	"github.com/nicodelara/uala-challenge/pkg/logger"
+	"github.com/nicodelara/microblogging-uala/internal/users/application"
+	userhttp "github.com/nicodelara/microblogging-uala/internal/users/infrastructure/http"
+	usermongo "github.com/nicodelara/microblogging-uala/internal/users/infrastructure/mongo"
+	"github.com/nicodelara/microblogging-uala/pkg/config"
+	"github.com/nicodelara/microblogging-uala/pkg/logger"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )

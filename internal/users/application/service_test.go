@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/nicodelara/uala-challenge/internal/users/domain"
+	"github.com/nicodelara/microblogging-uala/internal/users/domain"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )

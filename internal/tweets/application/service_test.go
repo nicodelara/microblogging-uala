@@ -5,8 +5,8 @@ import (
 	"errors"
 	"testing"
 
-	tweetsdomain "github.com/nicodelara/uala-challenge/internal/tweets/domain"
-	usersdomain "github.com/nicodelara/uala-challenge/internal/users/domain"
+	tweetsdomain "github.com/nicodelara/microblogging-uala/internal/tweets/domain"
+	usersdomain "github.com/nicodelara/microblogging-uala/internal/users/domain"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )

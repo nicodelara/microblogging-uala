@@ -6,9 +6,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/nicodelara/uala-challenge/internal/common"
-	"github.com/nicodelara/uala-challenge/internal/timeline/domain"
-	"github.com/nicodelara/uala-challenge/internal/timeline/domain/ports"
+	"github.com/nicodelara/microblogging-uala/internal/common"
+	"github.com/nicodelara/microblogging-uala/internal/timeline/domain"
+	"github.com/nicodelara/microblogging-uala/internal/timeline/domain/ports"
 )
 
 type TweetView struct {

@@ -3,9 +3,9 @@ package application
 import (
 	"context"
 
-	"github.com/nicodelara/uala-challenge/internal/common"
-	"github.com/nicodelara/uala-challenge/internal/tweets/domain"
-	"github.com/nicodelara/uala-challenge/internal/tweets/domain/ports"
+	"github.com/nicodelara/microblogging-uala/internal/common"
+	"github.com/nicodelara/microblogging-uala/internal/tweets/domain"
+	"github.com/nicodelara/microblogging-uala/internal/tweets/domain/ports"
 )
 
 type tweetService struct {

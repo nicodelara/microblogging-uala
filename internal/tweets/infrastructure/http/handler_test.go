@@ -10,9 +10,9 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/nicodelara/uala-challenge/internal/tweets/application"
-	"github.com/nicodelara/uala-challenge/internal/tweets/domain"
-	"github.com/nicodelara/uala-challenge/internal/tweets/domain/ports"
+	"github.com/nicodelara/microblogging-uala/internal/tweets/application"
+	"github.com/nicodelara/microblogging-uala/internal/tweets/domain"
+	"github.com/nicodelara/microblogging-uala/internal/tweets/domain/ports"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )

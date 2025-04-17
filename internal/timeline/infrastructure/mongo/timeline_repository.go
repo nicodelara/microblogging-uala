@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/nicodelara/uala-challenge/internal/timeline/domain"
-	"github.com/nicodelara/uala-challenge/internal/timeline/domain/ports"
+	"github.com/nicodelara/microblogging-uala/internal/timeline/domain"
+	"github.com/nicodelara/microblogging-uala/internal/timeline/domain/ports"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
