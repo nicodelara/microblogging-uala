@@ -1,4 +1,4 @@
-# Twitter-like API Challenge
+# Twitter-like Uala Challenge
 
 ## Descripción
 
