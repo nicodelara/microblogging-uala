@@ -1,0 +1,22 @@
+# Consideraciones de Negocio y Técnicas
+
+## Caching y Rendimiento
+* Priorizamos lecturas rápidas sobre consistencia inmediata
+* Timeline puede tener hasta 30 segundos de desfase (TTL configurable)
+* Aceptable para un cliente de microblogging donde la inmediatez no es crítica
+
+## Arquitectura Futura
+* MongoDB en modo shard (particionado por username)
+* Clusters de Redis para distribución de carga
+* Load balancers para cada microservicio
+* Servicios independientes y desplegables por separado
+
+## Eventos (Futura Implementación)
+* Kafka para eventos de:
+- Creación de tweets
+- Cambios en follows/followers
+* Invalidación de caché mediante eventos
+* Procesamiento downstream para:
+- Analytics
+- Notificaciones
+- Push de timelines

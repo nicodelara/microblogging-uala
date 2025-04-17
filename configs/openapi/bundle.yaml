@@ -1,0 +1,308 @@
+openapi: 3.0.0
+info:
+  title: Documentación Unificada de APIs
+  version: 1.0.0
+  description: Documentación para los servicios de Tweets, Users y Timeline.
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: http://localhost:8080
+    description: Servidor de desarrollo local
+  - url: https://api.uala-challenge.com
+    description: Servidor de producción
+paths:
+  /tweets:
+    post:
+      summary: Crear un nuevo tweet
+      operationId: createTweet
+      requestBody:
+        description: Datos del tweet a crear
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Nombre de usuario que crea el tweet
+                content:
+                  type: string
+                  maxLength: 280
+                  description: Contenido del tweet
+              required:
+                - username
+                - content
+      responses:
+        '201':
+          description: Tweet creado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: ID único del tweet
+                  username:
+                    type: string
+                    description: Nombre de usuario que creó el tweet
+                  content:
+                    type: string
+                    description: Contenido del tweet
+                  createdAt:
+                    type: string
+                    format: date-time
+                    description: Fecha y hora de creación
+        '400':
+          description: Error en la validación
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Mensaje de error
+        '404':
+          description: Usuario no encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Mensaje de error
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Mensaje de error
+  /users:
+    post:
+      summary: Crear un usuario
+      operationId: createUser
+      requestBody:
+        description: Datos del usuario a crear
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Nombre de usuario único
+                email:
+                  type: string
+                  format: email
+                  description: Correo electrónico del usuario
+              required:
+                - username
+                - email
+      responses:
+        '201':
+          description: Usuario creado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                    description: Nombre de usuario creado
+                  email:
+                    type: string
+                    description: Correo electrónico del usuario
+        '400':
+          description: Error en la validación
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Mensaje de error
+        '409':
+          description: Conflicto - Usuario o email ya existe
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Mensaje de error (username already exists o email already exists)
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Mensaje de error
+  /users/{username}/follow:
+    post:
+      summary: Seguir a un usuario
+      operationId: followUser
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Nombre de usuario que quiere seguir
+      requestBody:
+        description: Datos para seguir a un usuario
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                followUsername:
+                  type: string
+                  description: Nombre de usuario a seguir
+              required:
+                - followUsername
+      responses:
+        '201':
+          description: Usuario seguido exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: ID único del follow
+                  username:
+                    type: string
+                    description: Nombre de usuario que sigue
+                  following:
+                    type: string
+                    description: Nombre de usuario seguido
+        '400':
+          description: Error en la validación
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Mensaje de error
+        '404':
+          description: Usuario no encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Mensaje de error (el usuario que quiere seguir no existe o el usuario a seguir no existe)
+        '409':
+          description: Conflicto - Ya está siguiendo a este usuario
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Mensaje de error (ya estás siguiendo a este usuario)
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Mensaje de error
+  /timeline/{username}:
+    get:
+      summary: Obtener timeline de un usuario
+      operationId: getTimeline
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Nombre de usuario
+        - name: offset
+          in: query
+          description: Número de tweets a saltar
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          description: Número máximo de tweets a retornar
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Timeline del usuario
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                    description: Nombre de usuario
+                  tweets:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: ID del tweet
+                        username:
+                          type: string
+                          description: Nombre de usuario que creó el tweet
+                        content:
+                          type: string
+                          description: Contenido del tweet
+                        createdAt:
+                          type: string
+                          format: date-time
+                          description: Fecha y hora de creación
+        '404':
+          description: Usuario no encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Mensaje de error
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Mensaje de error

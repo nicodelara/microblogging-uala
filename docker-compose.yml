@@ -1,0 +1,133 @@
+services:
+  tweets:
+    build:
+      context: .
+      dockerfile: cmd/tweets/Dockerfile
+    container_name: tweets_service
+    ports:
+      - "8081:8081"
+    environment:
+      - TWEETS_PORT=8081
+      - MONGO_URI=mongodb://mongo:27017
+      - MONGO_DB_NAME=twitter
+      - USERS_DB_NAME=twitter
+      - REDIS_ADDR=redis:6379
+      - KAFKA_BROKERS=kafka:9092
+    depends_on:
+      - redis
+      - mongo
+      - kafka
+
+  users:
+    build:
+      context: .
+      dockerfile: cmd/users/Dockerfile
+    container_name: users_service
+    ports:
+      - "8082:8082"
+    environment:
+      - USERS_PORT=8082
+      - MONGO_URI=mongodb://mongo:27017
+      - MONGO_DB_NAME=twitter
+      - USERS_DB_NAME=twitter
+      - REDIS_ADDR=redis:6379
+      - KAFKA_BROKERS=kafka:9092
+    depends_on:
+      - redis
+      - mongo
+      - kafka
+
+  timeline:
+    build:
+      context: .
+      dockerfile: cmd/timeline/Dockerfile
+    container_name: timeline_service
+    ports:
+      - "8083:8083"
+    environment:
+      - TIMELINE_PORT=8083
+      - REDIS_ADDR=redis:6379
+      - MONGO_URI=mongodb://mongo:27017
+      - MONGO_DB_NAME=twitter
+      - USERS_DB_NAME=twitter
+      - KAFKA_BROKERS=kafka:9092
+      - CACHE_TTL_SECONDS=30
+    depends_on:
+      - redis
+      - mongo
+      - kafka
+
+  redis:
+    image: redis:6
+    container_name: redis
+    ports:
+      - "6379:6379"
+    restart: always
+
+  mongo:
+    image: mongo:4.4
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: always
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+    restart: always
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    ports:
+      - "9092:9092"
+    restart: always
+
+  akhq:
+    image: tchiotludo/akhq
+    container_name: akhq
+    ports:
+      - "8080:8080"
+    environment:
+      AKHQ_CONFIGURATION: |
+        akhq:
+          connections:
+            kafka:
+              properties:
+                bootstrap.servers: "kafka:9092"
+    depends_on:
+      - kafka
+    restart: always
+
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    container_name: redisinsight
+    ports:
+      - "8001:8001"
+    depends_on:
+      - redis
+
+  apidocs:
+    build:
+      context: .
+      dockerfile: Dockerfile.redoc
+    container_name: apidocs
+    ports:
+      - "8085:8085"
+    restart: always
+
+volumes:
+  mongo-data:

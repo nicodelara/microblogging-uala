@@ -1,0 +1,12 @@
+openapi: 3.0.0
+info:
+  title: Documentación Unificada de APIs
+  version: "1.0.0"
+  description: Documentación para los servicios de Tweets, Users y Timeline.
+paths:
+  /tweets:
+    $ref: './tweets.yaml#/paths/~1tweets'
+  /users:
+    $ref: './users.yaml#/paths/~1users'
+  /timeline/{userId}:
+    $ref: './timeline.yaml#/paths/~1timeline~1{userId}'

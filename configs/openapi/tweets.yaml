@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  title: Tweets Service API
+  version: 1.0.0
+  description: API para la creación y gestión de tweets.
+servers:
+  - url: http://localhost:8081
+paths:
+  /tweets:
+    post:
+      summary: Crear un nuevo tweet.
+      operationId: createTweet
+      requestBody:
+        description: Datos del tweet a crear.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                content:
+                  type: string
+                  maxLength: 280
+              required:
+                - userId
+                - content
+      responses:
+        '201':
+          description: Tweet creado exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tweetId:
+                    type: string
+                  userId:
+                    type: string
+                  content:
+                    type: string
+                  createdAt:
+                    type: string
+                    format: date-time
+        '400':
+          description: Error en la validación.

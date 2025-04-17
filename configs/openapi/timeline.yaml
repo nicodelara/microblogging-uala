@@ -1,0 +1,37 @@
+paths:
+  /timeline/{userId}:
+    get:
+      summary: Obtener el timeline de un usuario.
+      parameters:
+        - name: userId
+          in: path
+          description: Identificador del usuario.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista de tweets en el timeline.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: string
+                  timeline:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        tweetId:
+                          type: string
+                        userId:
+                          type: string
+                        content:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+        '404':
+          description: Usuario o timeline no encontrado.

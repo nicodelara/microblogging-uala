@@ -1,0 +1,19 @@
+paths:
+  /users:
+    post:
+      summary: Crear un usuario
+      requestBody:
+        description: Datos del usuario a crear.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+      responses:
+        '201':
+          description: Usuario creado exitosamente.

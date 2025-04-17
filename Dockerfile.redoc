@@ -1,0 +1,14 @@
+# Dockerfile.redoc
+FROM node:18-alpine
+
+# Instalar @redocly/cli globalmente
+RUN npm install -g @redocly/cli
+
+WORKDIR /app
+
+# Copiar el archivo maestro de documentación
+COPY ./configs/openapi/bundle.yaml /app/openapi.yaml
+
+EXPOSE 8085
+
+CMD ["npx", "@redocly/cli", "preview-docs", "openapi.yaml", "--port", "8085", "--host", "0.0.0.0"]
