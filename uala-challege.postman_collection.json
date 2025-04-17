@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "28fa48ee-f479-46cb-a5eb-121555df3e10",
+		"name": "uala-challege",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9384738"
+	},
+	"item": [
+		{
+			"name": "Create tweet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"nicodelara\",\n    \"content\": \"Este tweet es de prueba\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/tweets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tweets"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:8081/tweets \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"username\": \"nicodelara\", \"content\": \"Hola, este es un tweet de prueba\"}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"nicodelara\",\n    \"email\": \"nicodelara@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"users"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:8082/users \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"username\": \"usuario1\", \"email\": \"usuario1@example.com\"}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Seguir a un usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"followUsername\": \"ndelara\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/users/nicodelara/follow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"users",
+						"nicodelara",
+						"follow"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:8082/users/user123/follow \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"followId\": \"user456\"}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener el timeline de un usuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/timeline/nicodelara?offset=0&limit=11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"timeline",
+						"nicodelara"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "11"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl http://localhost:8083/timeline/user123\n"
+			},
+			"response": []
+		}
+	]
+}

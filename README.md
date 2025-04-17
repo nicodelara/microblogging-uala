@@ -119,6 +119,17 @@ docker compose logs -f [servicio]
 
 - `GET /timeline/{username}` - Obtener timeline de un usuario
 
+## Colección de Postman
+
+Para facilitar las pruebas de la API, se incluye una colección de Postman con ejemplos de los principales endpoints:
+
+- Crear tweet
+- Crear usuario
+- Seguir a un usuario
+- Obtener timeline de un usuario
+
+La colección se encuentra en el archivo `uala-challege.postman_collection.json` en la raíz del proyecto.
+
 ## Documentación API
 
 La documentación completa de la API está disponible en:
